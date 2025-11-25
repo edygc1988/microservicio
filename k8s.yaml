@@ -1,6 +1,8 @@
- Namespace
 apiVersion: v1
-kind: Namespace
+kind: Pod
 metadata:
-  name: nginx
-  
+  name: microservicio
+spec:
+  containers:
+    - name: hola-mundo
+      image: edygc1988/ejercicio1:1

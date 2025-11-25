@@ -1,10 +1,19 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: microservicio
 spec:
-  containers:
-    - name: hola-mundo
-      image: edygc1988/ejercicio2:1
-      ports:
-        - containerPort: 8000
+  replicas: 3
+  selector:
+    matchLabels:
+      app: microservicio
+  template:
+    metadata:
+      labels:
+        app: microservicio
+    spec:
+      containers:
+        - name: hola-mundo
+          image: edygc1988/ejercicio2:1
+          ports:
+            - containerPort: 8000

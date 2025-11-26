@@ -51,12 +51,3 @@ type: Opaque
 stringData:
   DB_PASSWORD: "contraseña-segura"
   API_KEY: "api-key-segura"
----
-apiVersion: apps/v1
-kind: ConfigMap
-metadata:
-  name: microservicio
-  data:
-    LOG_LEVEL: "DEBUG"
----
-

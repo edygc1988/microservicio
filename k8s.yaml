@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: microservicio
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: microservicio
@@ -15,6 +15,13 @@ spec:
       containers:
         - name: hola-mundo
           image: edygc1988/ejercicio2:1
+          resources:
+            requests:
+              cpu: "1"
+              memory: "250Mi"
+            limits:
+              cpu: "1"
+              memory: "250Mi"
           ports:
             - containerPort: 8000
           envFrom:
@@ -51,3 +58,28 @@ type: Opaque
 stringData:
   DB_PASSWORD: "contraseña-segura"
   API_KEY: "api-key-segura"
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: microservicio
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: microservicio
+  minReplicas: 2
+  maxReplicas: 6
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: AverageValue
+          averageValue: "1"
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: AverageValue
+          averageValue: "250Mi"

@@ -20,6 +20,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: microservicio
+            - secretRef:
+                name: microservicio-secret
 ---
 apiVersion: v1
 kind: Service
@@ -40,3 +42,21 @@ metadata:
   name: microservicio
 data:
   LOG_LEVEL: "DEBUG"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: microservicio-secret
+type: Opaque
+stringData:
+  DB_PASSWORD: "contraseña-segura"
+  API_KEY: "api-key-segura"
+---
+apiVersion: apps/v1
+kind: ConfigMap
+metadata:
+  name: microservicio
+  data:
+    LOG_LEVEL: "DEBUG"
+---
+

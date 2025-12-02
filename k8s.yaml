@@ -14,8 +14,8 @@ spec:
         app: microservicio
     spec:
       containers:
-        - name: mc-payments
-          image: edygc1988/mc-payments:3
+        - name: ms_payments
+          image: edygc1988/ms_payments:3
           resources:
             requests:
               cpu: "250m"

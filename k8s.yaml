@@ -14,7 +14,7 @@ spec:
         app: microservicio
     spec:
       containers:
-        - name: hola-mundo
+        - name: mc-payments
           image: edygc1988/mc-payments:3
           resources:
             requests:

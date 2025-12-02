@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: hola-mundo
-          image: edygc1988/ejercicio2:2
+          image: edygc1988/mc-payments:3
           resources:
             requests:
               cpu: "250m"
